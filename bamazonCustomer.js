@@ -68,7 +68,7 @@ function purchasePrompt(res) {
         });
     } 
 
-    function updateProduct(productName, productQuantity, Price) {
+    function updateProduct(productName, productQuantity) {
         // console.log("Updating all paintball quantities...\n");
         var query = connection.query(
             "UPDATE products SET ? WHERE ?",
@@ -81,9 +81,7 @@ function purchasePrompt(res) {
                     stock_quantity: productQuantity
                 },
 
-                // { 
-                  // price: Price
-                // }
+          
             ]
         );
 
@@ -120,11 +118,11 @@ function purchasePrompt(res) {
     function checkQuantity(userInput) {
         connection.query("SELECT product_name, stock_quantity, price from products WHERE ?", { product_name: userInput.item }, function (err, res) {
             console.log(res);
-            if (res.stock_quantity < userInput.amount) {
+            if (res[0].stock_quantity < userInput.amount) {
                 console.log("This item is out of stock.");
             } else {
                 console.log("Your order has been processed");
-                showOrder(userInput.item, userInput.amount, userInput.price);
+                showOrder(userInput.item, userInput.amount, res[0].price);
             }
         })
     }
