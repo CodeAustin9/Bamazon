@@ -1,3 +1,5 @@
+<img width="960" alt="bamazon com" src="https://user-images.githubusercontent.com/35317638/41124160-52762744-6a5e-11e8-8f10-66a736d723b4.png">
+
 # Bamazon
 # Node.js & MySQL
 
